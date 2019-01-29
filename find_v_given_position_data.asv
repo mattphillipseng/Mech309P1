@@ -17,9 +17,7 @@ eta =
 
 w = (m/eta^2)-l;
 g = 2*asin(sqrt(w));
-W = (2*g - sin(2*g)) / (sin(g))^3;
-
-
+W = (2*g )/
 
 
 
