@@ -5,8 +5,8 @@
 % Modified by Matthew Phillips
 % Student ID: 260689202
 
-% Modified by FirstName LastName
-% Student ID: 260 ...
+% Modified by Jarred Brown
+% Student ID: 260688463
 
 
 close all
