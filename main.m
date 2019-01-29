@@ -1,8 +1,13 @@
 %% MECH 309 Mini-Project 1
 % Starter code by Prof. Forbes
 % 2019/01/08
+
+% Modified by Matthew Phillips
+% Student ID: 260689202
+
 % Modified by FirstName LastName
 % Student ID: 260 ...
+
 
 close all
 clear all
