@@ -24,7 +24,7 @@ l_whole = (l_numerator/l_denom) - 0.5
 iter = 0;
 xleft = 1;
 xright = 2;
-while ((xright-xleft)>=0.0001) && (iter<=100)  
+while ((xright-xleft)>=0.00001) && (iter<=100)  
     iter=iter+1
     
     xroot = (xright+xleft)/2
@@ -39,22 +39,30 @@ while ((xright-xleft)>=0.0001) && (iter<=100)
         xleft=xroot;
     end
 end
-finalroot = xroot
 
-% 
-%     function f = eval_f(x,l,m)
-%         w = (m/(x^2))-l
-%         g = 2*asin(sqrt(w))
-%         W = (2*g - sin(2*g)) / (sin(g))^3
-%         f = 1-x+(m/x^2)*W
-%     end
+eta = xroot
 
+p_num = (eta^2) * (norm( cross(rg1)*rg2 ))^2
+p_denom = mu1 * (t2-t1)^2
+p = p_num/p_denom
+
+% Lagrange Coeffs
+F_num = p - (norm(rg2)*(1-cos(delta_theta)))
+F = F_num/p
+
+G_num = norm(rg1)*norm(rg2)*sin(delta_theta)
+G_denom = sqrt(mu1*p)
+G = G_num/G_denom
+
+% Final Results
+vg1 = (rg2-(F*rg1))/G
 
 
 
 
 % Some dummy values; delete these once you start writing your own code.
 rg1 = [Re + 450*1000; Re + 550*1000; Re + 650*1000];
-vg1 = [-2000; 1000; 4000];
+
+
 
 end
