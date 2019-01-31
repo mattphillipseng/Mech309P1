@@ -9,19 +9,19 @@ orbital_constants
 T_triangle = 0.5*norm( cross(rg1)*rg2 ); %triangle area between rg1, rg2, center of earth
 delta_theta = asin( T_triangle /(0.5*norm(rg1)*norm(rg2)) ); %from same formula as above
 
-m_numerator = mu1*((t2-t1)^2)
-m_denom = ( 2 * sqrt(norm(rg1)*norm(rg2)) * cos(delta_theta/2) )^3
-m_whole = m_numerator/m_denom
+m_numerator = mu1*((t2-t1)^2);
+m_denom = ( 2 * sqrt(norm(rg1)*norm(rg2)) * cos(delta_theta/2) )^3;
+m_whole = m_numerator/m_denom;
 
 
-l_numerator = norm(rg1) + norm(rg2)
-l_denom = 4 * sqrt(norm(rg1) * norm(rg2)) * cos(delta_theta/2)
-l_whole = (l_numerator/l_denom) - 0.5
+l_numerator = norm(rg1) + norm(rg2);
+l_denom = 4 * sqrt(norm(rg1) * norm(rg2)) * cos(delta_theta/2);
+l_whole = (l_numerator/l_denom) - 0.5;
 
 
-
+%% Bisection
 %eta must be between 1 and 2
-iter = 0;
+%iter = 0;
 % xleft = 1;
 % xright = 2;
 % while ((xright-xleft)>=0.00001) && (iter<=100)  
@@ -40,34 +40,36 @@ iter = 0;
 %     end
 % end
 % eta = xroot
-eta=2;
+
+%% Newton's Method
+% eta MUST be between 1 and 2. 2 is the upper bound
+% 1.5 is our initial guess
+iter = 0;
+eta=1.5;
 eta_next = 2;
-while (abs(eta_next - eta) < 0.001) && (iter <100)
-    eta_next = eta - eval_f(eta,l_whole,m_whole)/eval_deriv_f(eta,l_whole,m_whole);
+while (abs(eta_next - eta) > 0.00001) && (iter <100)
     eta = eta_next;
+    eta_next = eta - eval_f(eta,l_whole,m_whole)/eval_deriv_f(eta,l_whole,m_whole);
     iter = iter+1;
 end
 eta
 iter
 
 
-p_num = (eta^2) * (norm( cross(rg1)*rg2 ))^2
-p_denom = mu1 * (t2-t1)^2
-p = p_num/p_denom
+p_num = (eta^2) * (norm( cross(rg1)*rg2 ))^2;
+p_denom = mu1 * (t2-t1)^2;
+p = p_num/p_denom;
 
-% Lagrange Coeffs
-F_num = p - (norm(rg2)*(1-cos(delta_theta)))
-F = F_num/p
+%% Lagrange Coeffs
+F_num = p - (norm(rg2)*(1-cos(delta_theta)));
+F = F_num/p;
 
-G_num = norm(rg1)*norm(rg2)*sin(delta_theta)
-G_denom = sqrt(mu1*p)
-G = G_num/G_denom
+G_num = norm(rg1)*norm(rg2)*sin(delta_theta);
+G_denom = sqrt(mu1*p);
+G = G_num/G_denom;
 
-% Final Results
+%% Final Results
 vg1 = (rg2-(F*rg1))/G
-
-
-
 
 % Some dummy values; delete these once you start writing your own code.
 rg1 = [Re + 450*1000; Re + 550*1000; Re + 650*1000];
