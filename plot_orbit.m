@@ -28,7 +28,7 @@ for lv1 = 1:length(t)
     r_g(lv1,:) = R_g';
     v_g(lv1,:) = V_g';
     
-    % Store theta and r data. 
+    % Store theta and r data.
     th_data(lv1) = th;
     r_data(lv1) = r;
     
