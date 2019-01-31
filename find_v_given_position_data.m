@@ -72,7 +72,7 @@ G = G_num/G_denom;
 vg1 = (rg2-(F*rg1))/G
 
 % Some dummy values; delete these once you start writing your own code.
-rg1 = [Re + 450*1000; Re + 550*1000; Re + 650*1000];
+%rg1 = [Re + 450*1000; Re + 550*1000; Re + 650*1000];
 
 
 

@@ -35,19 +35,17 @@ r = p/(1 + e*cos(th)); %OK
 % eccentricity: we have this
 % angular momentum vector
 % angular momemntum
-
-%%
-%ecc_vect = 
+ecc_vect = 
 
 
 
 %% Perifocal Ref Frame
-%p_1 = 
+p_1 = 
 
 
 
 %% Compute R and V in frame ``p", the perifocal frame.
-R_p = [r*cos(th) r*sin(th) 0].'; % m %need FTP before????????
+R_p = [r*cos(th) r*sin(th) 0].'; % m %need FTP before
 V_p = [-sin(th) cos(th)+e 0].'*sqrt(mu1/p); % m/s
 
 % %Compute R and V in frame ``g", the ECI frame. 
