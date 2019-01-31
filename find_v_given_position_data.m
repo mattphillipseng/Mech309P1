@@ -22,25 +22,34 @@ l_whole = (l_numerator/l_denom) - 0.5
 
 %eta must be between 1 and 2
 iter = 0;
-xleft = 1;
-xright = 2;
-while ((xright-xleft)>=0.00001) && (iter<=100)  
-    iter=iter+1
-    
-    xroot = (xright+xleft)/2
-    
-    mid_val = eval_f(xroot,l_whole,m_whole);
-    left_val = eval_f(xleft,l_whole,m_whole);
-    right_val = eval_f(xright,l_whole,m_whole);
-    
-    if(left_val*mid_val) < 0 %one is pos, one is neg. The mult of both is neg: therefore root is between xleft and xroot
-        xright=xroot;
-    else
-        xleft=xroot;
-    end
+% xleft = 1;
+% xright = 2;
+% while ((xright-xleft)>=0.00001) && (iter<=100)  
+%     iter=iter+1
+%     
+%     xroot = (xright+xleft)/2
+%     
+%     mid_val = eval_f(xroot,l_whole,m_whole);
+%     left_val = eval_f(xleft,l_whole,m_whole);
+%     right_val = eval_f(xright,l_whole,m_whole);
+%     
+%     if(left_val*mid_val) < 0 %one is pos, one is neg. The mult of both is neg: therefore root is between xleft and xroot
+%         xright=xroot;
+%     else
+%         xleft=xroot;
+%     end
+% end
+% eta = xroot
+eta=2;
+eta_next = 2;
+while (abs(eta_next - eta) < 0.001) && (iter <100)
+    eta_next = eta - eval_f(eta,l_whole,m_whole)/eval_deriv_f(eta,l_whole,m_whole);
+    eta = eta_next;
+    iter = iter+1;
 end
+eta
+iter
 
-eta = xroot
 
 p_num = (eta^2) * (norm( cross(rg1)*rg2 ))^2
 p_denom = mu1 * (t2-t1)^2
