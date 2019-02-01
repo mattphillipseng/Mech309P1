@@ -4,7 +4,7 @@ function [T_hr] = plot_orbit(a,e,Omega,inc,omega_orbit,t0)
 orbital_constants
 
 %% Compute various useful quantities
-T = sqrt(((4*pi^3)/mu1)*a^3);
+T = sqrt(((4*pi^3)/mu1)*a^3); %seconds
 T_hr = T/3600; % hr
 p = a*(1-e^2);
 
@@ -31,6 +31,7 @@ for lv1 = 1:length(t)
 end
 
 plot_script_v1
+plot_script_v2
 
 end
 

@@ -14,8 +14,8 @@ while (abs(E_next - E) > 0.00001) && (iter <100)
     E_next = E - eval_E(E,e,M)/eval_deriv_E(E,e,M);
     iter = iter+1;
 end
-E
-iter
+E;
+iter;
 
 
 %% Calculating theta and r

@@ -58,8 +58,8 @@ while (abs(eta_next - eta) > 0.00001) && (iter <100)
     eta_next = eta - eval_f(eta,l_whole,m_whole)/eval_deriv_f(eta,l_whole,m_whole);
     iter = iter+1;
 end
-eta
-iter
+eta;
+iter;
 
 %% Calculating p
 p_num = (eta^2) * (norm( cross(rg1)*rg2 ))^2;

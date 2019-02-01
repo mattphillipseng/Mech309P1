@@ -1,6 +1,6 @@
 % Plotting
 
-close all
+%close all
 font_size = 15;
 line_size = 15;
 line_width = 2;
