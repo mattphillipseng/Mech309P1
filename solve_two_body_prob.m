@@ -7,7 +7,7 @@ orbital_constants
 M = sqrt(mu1/a^3)*(t-t0);
 
 iter = 0;
-E=M;
+E=M; % E=M at the apoapsis***** CHECK THIS
 E_next = M+1; %just to make sure while loop is entered
 while (abs(E_next - E) > 0.00001) && (iter <100)
     E = E_next;
@@ -18,7 +18,7 @@ E
 iter
 
 
-% For now, make something up %can delete this comment
+%% Calculating theta and r
 sin_th = (sqrt(1-e^2)*sin(E)) / (1-e*cos(E));
 cos_th = (cos(E)-e) / (1-e*cos(E));
 th = atan2(sin_th,cos_th);
@@ -27,7 +27,7 @@ r = p/(1 + e*cos(th)); %OK
 
 
 %% Compute R and V in frame ``p", the perifocal frame.
-R_p = [r*cos(th) r*sin(th) 0].'; % m %need FTP before???????? NO
+R_p = [r*cos(th) r*sin(th) 0].'; % m
 V_p = [-sin(th) cos(th)+e 0].'*sqrt(mu1/p); % m/s
 
 % %Compute R and V in frame ``g", the ECI frame. 

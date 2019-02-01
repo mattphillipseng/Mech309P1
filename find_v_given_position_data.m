@@ -4,22 +4,22 @@ function [rg1,vg1] = find_v_given_position_data(rg1,rg2,t1,t2)
 
 orbital_constants
 
-% Here is where you will write code to find vg1 given rg1, rg2, t1, and t2.
+% Code to find vg1 given rg1, rg2, t1, and t2.
 
 T_triangle = 0.5*norm( cross(rg1)*rg2 ); %triangle area between rg1, rg2, center of earth
 delta_theta = asin( T_triangle /(0.5*norm(rg1)*norm(rg2)) ); %from same formula as above
 
 m_numerator = mu1*((t2-t1)^2);
 m_denom = ( 2 * sqrt(norm(rg1)*norm(rg2)) * cos(delta_theta/2) )^3;
-m_whole = m_numerator/m_denom;
+m_whole = m_numerator/m_denom; % used later
 
 
 l_numerator = norm(rg1) + norm(rg2);
 l_denom = 4 * sqrt(norm(rg1) * norm(rg2)) * cos(delta_theta/2);
-l_whole = (l_numerator/l_denom) - 0.5;
+l_whole = (l_numerator/l_denom) - 0.5; % used later
 
 
-%% Bisection
+%% Bisection -- This code is no longer in use
 %eta must be between 1 and 2
 %iter = 0;
 % xleft = 1;
@@ -42,11 +42,17 @@ l_whole = (l_numerator/l_denom) - 0.5;
 % eta = xroot
 
 %% Newton's Method
-% eta MUST be between 1 and 2. 2 is the upper bound
-% 1.5 is our initial guess
+
+% Eta MUST be between 1 and 2. 2 is the upper bound.
+% This is by multiplying the triangular area to get a rectangle.
+% The path of the ellipse will be between the triangle hypotenuse and the
+% edges of the rectangle. Thus, its area cannot be bigger than the area of
+% the rectangle.
+
+% 1.5 is our initial guess.
 iter = 0;
 eta=1.5;
-eta_next = 2;
+eta_next = eta+1; % To ensure the while loop is entered.
 while (abs(eta_next - eta) > 0.00001) && (iter <100)
     eta = eta_next;
     eta_next = eta - eval_f(eta,l_whole,m_whole)/eval_deriv_f(eta,l_whole,m_whole);
@@ -55,7 +61,7 @@ end
 eta
 iter
 
-
+%% Calculating p
 p_num = (eta^2) * (norm( cross(rg1)*rg2 ))^2;
 p_denom = mu1 * (t2-t1)^2;
 p = p_num/p_denom;
@@ -70,9 +76,6 @@ G = G_num/G_denom;
 
 %% Final Results
 vg1 = (rg2-(F*rg1))/G
-
-% Some dummy values; delete these once you start writing your own code.
-%rg1 = [Re + 450*1000; Re + 550*1000; Re + 650*1000];
 
 
 

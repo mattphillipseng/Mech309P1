@@ -4,15 +4,11 @@ function [T_hr] = plot_orbit(a,e,Omega,inc,omega_orbit,t0)
 orbital_constants
 
 %% Compute various useful quantities
-
-%T = 8.5e3; % Made up number
 T = sqrt(((4*pi^3)/mu1)*a^3);
-T_hr = T/3600; % hr,
-%p = 7e6; % Made up number
+T_hr = T/3600; % hr
 p = a*(1-e^2);
 
 %% Find the DCM from the perifocal frame to the inertial frame
-%Cpg = eye(3); % Made up, need to be changed. 
 Cpg = C3(omega_orbit)*C1(inc)*C3(Omega);
 Cgp = Cpg';
 
@@ -35,8 +31,6 @@ for lv1 = 1:length(t)
 end
 
 plot_script_v1
-
-% return
 
 end
 
