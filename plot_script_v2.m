@@ -13,7 +13,7 @@ xlabel('$Time$ (Hours)','fontsize',font_size,'Interpreter','latex');
 ylabel('$\theta$ ($\pi$ rad) True Anomaly','fontsize',font_size,'Interpreter','latex');
 %zlabel('$g^3$ (m)','fontsize',font_size,'Interpreter','latex');
 %view([1 1 1])
-print('plots/other','-depsc','-r720');
+print('plots/th_data','-depsc','-r720');
 
 
 
@@ -25,4 +25,4 @@ xlabel('$Time$ (Hours)','fontsize',font_size,'Interpreter','latex');
 ylabel('$r$, Radius from the Center of the Earth','fontsize',font_size,'Interpreter','latex');
 %zlabel('$g^3$ (m)','fontsize',font_size,'Interpreter','latex');
 %view([1 1 1])
-print('plots/other','-depsc','-r720');
+print('plots/r_data','-depsc','-r720');
