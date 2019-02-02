@@ -1,4 +1,4 @@
-function [rg1,vg1] = find_v_given_position_data(rg1,rg2,t1,t2)
+function [rg1,vg1,ref_h] = find_v_given_position_data(rg1,rg2,t1,t2)
 % Find vg1 given rg1, rg2, t1, and t2.
 % Once rg1 and vg1 are found, the orbital elements can be computed. 
 
@@ -61,8 +61,17 @@ end
 eta;
 iter;
 
+
 %% Check difference between roots from bisection and Newton
 err_eta = abs(eta_bisection-eta)
+
+%% Calculating the reference h, angular momentum
+% This is for energy checks.
+% use: eta = S/T
+% use: h = 2*S*(dt)
+S = eta*T_triangle;
+ref_h = 2*S*abs(t2-t1);
+
 
 %% Calculating p
 p_num = (eta^2) * (norm( cross(rg1)*rg2 ))^2;

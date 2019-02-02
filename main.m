@@ -24,12 +24,15 @@ load('measurements.mat');
 whos
 
 %% Solve orbit determination problem
-[rg1,vg1] = find_v_given_position_data(r_g_at_t1,r_g_at_t2,t1,t2)
+[rg1,vg1,ref_h] = find_v_given_position_data(r_g_at_t1,r_g_at_t2,t1,t2)
 
 %% Solve for orbital elements
 % This is ``p-code", protected code. 
 [a,e,Omega,inc,omega,t0] = orbital_elements(rg1,vg1) 
 
 %% Plot orbit
-[T_hr] = plot_orbit(a,e,Omega,inc,omega,t0)
+[T_hr,r_g] = plot_orbit(a,e,Omega,inc,omega,t0)
+
+%% Perform energy check for conservation of angular momentum
+energy_check_plot
 
