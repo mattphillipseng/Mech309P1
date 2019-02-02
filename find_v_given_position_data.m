@@ -20,26 +20,26 @@ l_whole = (l_numerator/l_denom) - 0.5; % used later
 
 
 %% Bisection -- This code is no longer in use
-%eta must be between 1 and 2
-%iter = 0;
-% xleft = 1;
-% xright = 2;
-% while ((xright-xleft)>=0.00001) && (iter<=100)  
-%     iter=iter+1
-%     
-%     xroot = (xright+xleft)/2
-%     
-%     mid_val = eval_f(xroot,l_whole,m_whole);
-%     left_val = eval_f(xleft,l_whole,m_whole);
-%     right_val = eval_f(xright,l_whole,m_whole);
-%     
-%     if(left_val*mid_val) < 0 %one is pos, one is neg. The mult of both is neg: therefore root is between xleft and xroot
-%         xright=xroot;
-%     else
-%         xleft=xroot;
-%     end
-% end
-% eta = xroot
+% eta must be between 1 and 2
+iter = 0;
+xleft = 1;
+xright = 2;
+while ((xright-xleft)>=0.000001) && (iter<=100)  
+    iter=iter+1;
+    
+    xroot = (xright+xleft)/2;
+    
+    mid_val = eval_f(xroot,l_whole,m_whole);
+    left_val = eval_f(xleft,l_whole,m_whole);
+    right_val = eval_f(xright,l_whole,m_whole);
+    
+    if(left_val*mid_val) < 0 %one is pos, one is neg. The mult of both is neg: therefore root is between xleft and xroot
+        xright=xroot;
+    else
+        xleft=xroot;
+    end
+end
+eta_bisection = xroot;
 
 %% Newton's Method
 
@@ -53,13 +53,16 @@ l_whole = (l_numerator/l_denom) - 0.5; % used later
 iter = 0;
 eta=1.5;
 eta_next = eta+1; % To ensure the while loop is entered.
-while (abs(eta_next - eta) > 0.00001) && (iter <100)
+while (abs(eta_next - eta) > 0.000001) && (iter <100)
     eta = eta_next;
     eta_next = eta - eval_f(eta,l_whole,m_whole)/eval_deriv_f(eta,l_whole,m_whole);
     iter = iter+1;
 end
 eta;
 iter;
+
+%% Check difference between roots from bisection and Newton
+err_eta = abs(eta_bisection-eta)
 
 %% Calculating p
 p_num = (eta^2) * (norm( cross(rg1)*rg2 ))^2;
