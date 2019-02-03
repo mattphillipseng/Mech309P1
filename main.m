@@ -31,7 +31,7 @@ whos
 [a,e,Omega,inc,omega,t0] = orbital_elements(rg1,vg1) 
 
 %% Plot orbit
-[T_hr,r_g] = plot_orbit(a,e,Omega,inc,omega,t0)
+[T_hr,r_g,v_g] = plot_orbit(a,e,Omega,inc,omega,t0);
 
 %% Perform energy check for conservation of angular momentum
 energy_check_plot

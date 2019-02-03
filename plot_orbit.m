@@ -1,4 +1,4 @@
-function [T_hr,r_g] = plot_orbit(a,e,Omega,inc,omega_orbit,t0)
+function [T_hr,r_g,v_g] = plot_orbit(a,e,Omega,inc,omega_orbit,t0)
 % Plot the orbit
 
 orbital_constants

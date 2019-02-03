@@ -1,5 +1,5 @@
 % Plotting
-% This script uses r_g and ref_h primarily
+% This script uses r_g, v_g and ref_h primarily
 
 %% Times to plot, time steps
 T = sqrt(((4*pi^2)/mu1)*a^3); %Orbital period, seconds
@@ -7,55 +7,19 @@ t = linspace(0,T,1000); % times to plot
 
 
 %% Processing Data
-% Getting time steps
 for lv1 = 1:length(t)
-    t1 = t(lv1);
-    % to get the last point to compare to the 1st point, since the orbit
-    % comes back to its initial position
-    if lv1==1000
-        t2=0;
-    else
-        t2 = t(lv1+1);
-    end
-    
-    dt = abs(t2-t1);
-    
-    % storing to dts data
-    dts(lv1,:) = dt;
-end
-
-% Calculating angular momentum errors at each time step
-for lv2 = 1:length(t)
-    p1 = lv2;
-    
-    % to get the last point to compare to the 1st point, since the orbit
-    % comes back to its initial position
-    if lv2==1000
-        p2=1;
-    else
-        p2 = lv2+1;
-    end
-    
-    r1 = [r_g(p1,1);r_g(p1,2);r_g(p1,3)];
-    r2 = [r_g(p2,1);r_g(p2,2);r_g(p2,3)];
-    T_triangle = 0.5*norm( cross(r1)*r2 ); %triangle area between 2 points in the orbit
-    
-    %Sl
-    iter = 0;
-    eta=1.5;
-    eta_next = eta+1; % To ensure the while loop is entered.
-    while (abs(eta_next - eta) > 0.000001) && (iter <100)
-        eta = eta_next;
-        eta_next = eta - eval_f(eta,l_whole,m_whole)/eval_deriv_f(eta,l_whole,m_whole);
-        iter = iter+1;
-    end
-    eta;
-    iter;
-    
-    S = eta*T_triangle;
-    h = 2*S*(1/dts(lv1))
-        
-    
+   this_r = [r_g(lv1,1);r_g(lv1,2);r_g(lv1,3)];
+   this_v = [v_g(lv1,1);v_g(lv1,2);v_g(lv1,3)];
+   
+   this_h_vect = cross(this_r)*this_v;
+   this_h = norm(this_h_vect); % magnitude of angular velocity vector
+   
+   abs_err_h = abs(this_h-ref_h); % absolute error
+   rel_err_h = abs_err_h/ref_h
+   
+   abs_errors(lv1) = 
+   r_data(lv1) = r;
+   
 end
 
 %close all

@@ -70,7 +70,7 @@ err_eta = abs(eta_bisection-eta)
 % use: eta = S/T
 % use: h = 2*S*(dt)
 S = eta*T_triangle;
-ref_h = 2*S*abs(t2-t1);
+ref_h = 2*S*(1/abs(t2-t1));
 
 
 %% Calculating p
