@@ -28,16 +28,18 @@ font_size = 15;
 line_size = 15;
 line_width = 2;
 
+%% Absolute Error Plot
 figure
 stairs(t/3600,abs_errors,'r','Linewidth',line_width);
 % title('Absolute Error in Angular Momentum as a Function of Time')
 xlabel('$Time$ (Hours)','fontsize',font_size,'Interpreter','latex');
-ylabel('Relative Error for Angular Momentum $\frac{m^2}{s}$','fontsize',font_size,'Interpreter','latex');
+ylabel('Absolute Error, Angular Momentum $[\frac{m^2}{s}]$','fontsize',font_size,'Interpreter','latex');
 print('plots/energy_abs','-depsc','-r720');
 
+%% Relative Error Plot
 figure
 stairs(t/3600,rel_errors,'r','Linewidth',line_width);
 % title('Relative Error in Angular Momentum as a Function of Time')
 xlabel('$Time$ (Hours)','fontsize',font_size,'Interpreter','latex');
-ylabel('Relative Error for Angular Momentum $\frac{m^2}{s}$','fontsize',font_size,'Interpreter','latex');
+ylabel('Relative Error, Angular Momentum','fontsize',font_size,'Interpreter','latex');
 print('plots/energy_rel','-depsc','-r720');

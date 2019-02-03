@@ -16,7 +16,6 @@ Cgp = Cpg';
 t = linspace(0,T,1000); % times to plot
 
 for lv1 = 1:length(t)
-    
     % Compute th, r, r_g, and v_g
     [th,r,R_g,V_g] = solve_two_body_prob(t(lv1),a,e,p,t0,Cgp);
     
@@ -27,7 +26,6 @@ for lv1 = 1:length(t)
     % Store theta and r data.
     th_data(lv1) = th;
     r_data(lv1) = r;
-    
 end
 
 plot_script_v1

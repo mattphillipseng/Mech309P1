@@ -39,7 +39,7 @@ end
 E;
 iter;
 
-%% Check difference between roots from bisection and Newton -- No longer in use
+%% Check difference between roots from bisection and Newton
 % errE = abs(E_bisection-E)
 
 %% Calculating theta and r

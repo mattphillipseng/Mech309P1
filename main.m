@@ -8,7 +8,6 @@
 % Modified by Jarred Brown
 % Student ID: 260688463
 
-
 close all
 clear all
 clc
@@ -16,7 +15,6 @@ clc
 % Format of output
 % format short
 format long
-
 
 %% Load data
 orbital_constants
@@ -33,6 +31,5 @@ whos
 %% Plot orbit
 [T_hr,r_g,v_g] = plot_orbit(a,e,Omega,inc,omega,t0);
 
-%% Perform energy check for conservation of angular momentum
-energy_check_plot
-
+%% Perform conservation check for angular momentum
+conservation_check_plot
