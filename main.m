@@ -22,7 +22,7 @@ load('measurements.mat');
 whos
 
 %% Solve orbit determination problem
-[rg1,vg1,ref_h] = find_v_given_position_data(r_g_at_t1,r_g_at_t2,t1,t2)
+[rg1,vg1,ref_h,p] = find_v_given_position_data(r_g_at_t1,r_g_at_t2,t1,t2)
 
 %% Solve for orbital elements
 % This is ``p-code", protected code. 
@@ -33,3 +33,7 @@ whos
 
 %% Perform conservation check for angular momentum
 conservation_check_plot
+
+%% Other Parameters Wanted
+r_at_perigee = (1-e)*a;
+r_at_apogee = (e)*a;

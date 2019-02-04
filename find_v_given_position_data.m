@@ -1,4 +1,4 @@
-function [rg1,vg1,ref_h] = find_v_given_position_data(rg1,rg2,t1,t2)
+function [rg1,vg1,ref_h,p] = find_v_given_position_data(rg1,rg2,t1,t2)
 % Find vg1 given rg1, rg2, t1, and t2.
 % Once rg1 and vg1 are found, the orbital elements can be computed. 
 

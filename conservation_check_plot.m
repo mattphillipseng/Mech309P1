@@ -12,7 +12,7 @@ for lv1 = 1:length(t)
    this_v = [v_g(lv1,1);v_g(lv1,2);v_g(lv1,3)];
    
    this_h_vect = cross(this_r)*this_v;
-   this_h = norm(this_h_vect); % magnitude of angular velocity vector
+   this_h = norm(this_h_vect); % magnitude of angular momentum vector
    
    abs_err_h = abs(this_h-ref_h); % absolute error
    rel_err_h = abs_err_h/ref_h; % relative error
